@@ -1,0 +1,16 @@
+
+<!-- ***Start Page***  User sees survey title, instructions, and start button.
+                    User moves to questions page from here. -->
+
+{% extends 'base.html' %}
+{% block title %}
+    Survey Start Page
+{% endblock %}
+
+{% block content %}
+
+{{survey['title']}}</p>
+<p>Instructions: {{survey['instructions']}}<br></p>
+<form action="/questions/1"><button>Start Survey</button></form>
+
+{% endblock %}

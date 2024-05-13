@@ -1,0 +1,24 @@
+
+<!-- ***Home Page***  where user selects the survey to complete.
+                    Once a survey has been selected, and the start button clicked;
+                    the user moves to start survey page. -->
+
+{% extends 'base.html' %}
+{% block title %}
+    Select A Survey
+{% endblock %}
+
+{% block content %}
+<p>Choose a survey:</p>
+<form action="/start">
+  {% for survey in survey_options %}
+  <!-- Loop through and present the available survey options located in surveys.py -->
+    <label>
+        <input type="radio" name="choice" value="{{survey}}"> {{survey}}
+      </label><br>
+  {% endfor %}    
+      <br>
+      <button type="submit">Start</button>
+</form>
+
+{% endblock %}
