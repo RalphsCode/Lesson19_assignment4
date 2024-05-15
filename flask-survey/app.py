@@ -77,4 +77,26 @@ def answers(number):
 		# If this was the last question, reset the answers list, and go to thank you page:
 		responses = []
 		number_check = 1
-		return render_template('thanks.html', survey_title = survey.title)
+		return render_template('thank_you.html', survey_title = survey.title)
+	
+@app.route('/thank_you')
+def thank_you():
+	counter = 0  # is the survey number
+	question_number = 1  # is the question number
+	survey_questions = {}
+	for k,v in surveys.surveys.items():
+		for question_list in v.questions:
+			str_name = 'survey_'+ str(counter) + '_' + str(question_number)
+			survey_questions[str_name]= question_list.question
+			# survey_questions[str_name]=v.questions[counter].question
+			print('#################### survey_questions:', survey_questions)
+			question_number += 1
+		counter += 1
+	# survey_questions = request.args.get('survey_questions', 'No Questions found')
+	return render_template('thank_you.html', survey_questions = survey_questions)
+
+@app.route('/delete_cookie/<name>')
+def delete_cookie(name):
+	session.pop(name, None)
+	print('Deleted Cookie:', name)
+	return redirect('/thank_you')

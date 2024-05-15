@@ -58,8 +58,8 @@ python_quiz = Survey(
                  ['Paul "Python" Petterson', 'Guido van Rossum', 'Jeff Bezos']),
         Question("Is Python named after the python snake?"),
         Question("Does Python run on the server?"),
-        Question("Which is better, Python, JavaScript, or another language, and why?",
-                 ['Python', 'JavaScript', 'other language'],
+        Question("Which is better, Python, JavaScript, or Another Language, and why?",
+                 ['Python', 'JavaScript', 'Other Language'],
                  allow_text=True)
     ]
 )

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}
+    Thank you
+{% endblock %}
+
+{% block content %}
+<h1>Thank you for completing this survey.</h1>
+<p>Completed Surveys:</p>
+
+<ul>
+{% for name, answer in session.items() %} 
+<h3> {{name}} </h3>
+    {% if answer %}
+        <form action='delete_cookie/{{name}}'><button>Delete Cookie</button></form>
+        {% for ans in answer %} 
+
+                <li>
+                {{ ans }} 
+                </li>
+           
+        {% endfor %}
+    {% endif %}
+<hr>
+{% endfor %}
+</object>
+<ul> 
+    <!-- QUESTIONS -->
+    {% for question in survey_questions.values() %}
+    <li>{{ question }}</li>
+{% endfor %}
+</ol> 
+
+<br>
+
+<br>
+<a href="/home">Return to home page</a>
+{% endblock %}

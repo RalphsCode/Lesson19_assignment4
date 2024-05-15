@@ -5,8 +5,16 @@
 
 {% block content %}
 <h1>Thank you for completing this survey.</h1>
-<p>Your responses:</p>
-<p>{{ session[survey_title] }} </p>
+<p>Completed Surveys:</p>
+<ul>
+{% for name, answer in session.items() %} 
+{% if answer %}
+<li>{{ name, answer[2] }}</li>
+{% else %}
+<li>{{ name }} Not completed yet.</li>
+{% endif %}
+{% endfor %}
+</ul>
 <br>
 <a href="/home">Return to home page</a>
 {% endblock %}
