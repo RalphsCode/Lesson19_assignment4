@@ -4,9 +4,10 @@
 {% endblock %}
 
 {% block content %}
-<h1>Thank you for completing this survey.</h1>
+<p>Thank you for completing this survey.</p>
 <p>Completed Surveys:</p>
-
+<!-- Loops through the surveys completed, and the questions,
+and the answers provided by the user. -->
 <ul>
 {% for survey_name, q_and_a in session.items() %} 
 <h3> {{survey_name}} </h3>
@@ -18,17 +19,10 @@
         {% endfor %}
     </p>
     {% endif %}
+    <!-- Option to delete from the flask cookie the survey's questions and answers -->
     <form action='/delete_cookie/{{name}}'><button>Delete Cookie</button></form>
     <hr>
 {% endfor %}
-</object>
-<ul> 
-    <!-- QUESTIONS -->
-
-</ol> 
-
-<br>
-
-<br>
+<br><br>
 <a href="/home">Return to home page</a>
 {% endblock %}

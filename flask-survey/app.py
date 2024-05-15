@@ -39,9 +39,9 @@ def start():
 def questions(number):
 	""" Questions Page
 	presents each question and answer options on unique pages.
-	The HTML page also saves the user answers to the Session.
-	Once a question is answered, clicking the button reloads
-	the question page with the next question."""
+	Once a question is answered, clicking the continue button 
+	sends the server to the answers page, which then reloads
+	this question page with the next question."""
 	global survey
 	global responses
 	global number_check
@@ -57,7 +57,7 @@ def questions(number):
 @app.route('/answers/<int:number>', methods=['GET', 'POST'])
 def answers(number):
 	""" Answers Page
-	The HTML page saves the user answers to the Session.
+	The HTML page saves the question, and user answers to the Session.
 	Once a question is answered, clicking the button redirects
 	to the question page with the next question."""
 	global survey
@@ -82,11 +82,12 @@ def answers(number):
 	
 @app.route('/thank_you')
 def thank_you():
-
+	"""Loads the thank you page showing the completed surveys."""
 	return render_template('thank_you.html')
 
 @app.route('/delete_cookie/<name>')
 def delete_cookie(name):
+	"""This deletes the flask cookie of the specified completed survey.
+	and redirects to the thank you page."""
 	session.pop(name, None)
-	print('Deleted Cookie:', name)
 	return redirect('/thank_you')
