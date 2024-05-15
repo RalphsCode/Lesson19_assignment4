@@ -14,6 +14,8 @@
 <p>{{ survey['questions'][number-1]['question'] }}</p>
 <!-- Display the answer options -->
 <form action="/answers/{{number}}" method="post" name="question{{number}}">
+    <!-- Pass the question back to the server -->
+    <input type="hidden" name="question_asked" value="{{ survey['questions'][number-1]['question'] }}">
     <!-- Loop through the answer options in Jinja -->
     {% for options in survey['questions'][number-1]['choices'] %}
       <label>

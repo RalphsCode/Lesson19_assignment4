@@ -8,26 +8,23 @@
 <p>Completed Surveys:</p>
 
 <ul>
-{% for name, answer in session.items() %} 
-<h3> {{name}} </h3>
-    {% if answer %}
-        <form action='delete_cookie/{{name}}'><button>Delete Cookie</button></form>
-        {% for ans in answer %} 
-
-                <li>
-                {{ ans }} 
-                </li>
-           
+{% for survey_name, q_and_a in session.items() %} 
+<h3> {{survey_name}} </h3>
+    {% if q_and_a %}
+    <p>
+        {% for entry in q_and_a %} 
+            {{ entry }} 
+            <br>
         {% endfor %}
+    </p>
     {% endif %}
-<hr>
+    <form action='/delete_cookie/{{name}}'><button>Delete Cookie</button></form>
+    <hr>
 {% endfor %}
 </object>
 <ul> 
     <!-- QUESTIONS -->
-    {% for question in survey_questions.values() %}
-    <li>{{ question }}</li>
-{% endfor %}
+
 </ol> 
 
 <br>
